@@ -54,6 +54,13 @@ namespace snake
             }
         }
 
+        //Метод убирающий точку с игрового поля
+        public void Clear(ref Point point)
+        {
+            point.symbol = ' ';
+            point.Draw();
+        }
+
         //Метод вывода точки-символа на консоль
         public void Draw()
         {

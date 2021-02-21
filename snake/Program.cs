@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace snake
@@ -32,6 +33,11 @@ namespace snake
             //змея длиной 15, ползёт вправо
             Snake snake = new Snake(tail, 15, Direction.right);
             snake.Draw();
+            for (int i = 0; i < 40; i++)
+            {
+                snake.Move();
+                Thread.Sleep(300);
+            }
 
             Console.ReadKey();
         }
