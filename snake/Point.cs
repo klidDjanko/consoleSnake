@@ -13,6 +13,14 @@ namespace snake
         public int y;
         public char symbol;
 
+        //Конструктор для инициализации точки, её координат и отображаемого символа
+        public Point(int userX, int userY, char userSym)
+        {
+            x = userX;
+            y = userY;
+            symbol = userSym;
+        }
+
         //Метод вывода точки-символа на консоль
         public void Draw()
         {
