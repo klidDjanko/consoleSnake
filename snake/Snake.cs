@@ -44,5 +44,14 @@ namespace snake
             //рисуем точку головы
             head.Draw();
         }
+
+        //Метод управления движением змеи с клавиатуры
+        public void SnakeControl(ConsoleKey key)
+        {
+            if (key == ConsoleKey.UpArrow) direction = Direction.up;
+            if (key == ConsoleKey.DownArrow) direction = Direction.down;
+            if (key == ConsoleKey.LeftArrow) direction = Direction.left;
+            if (key == ConsoleKey.RightArrow) direction = Direction.right;
+        }
     }
 }

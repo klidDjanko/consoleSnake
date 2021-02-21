@@ -33,13 +33,21 @@ namespace snake
             //змея длиной 15, ползёт вправо
             Snake snake = new Snake(tail, 15, Direction.right);
             snake.Draw();
-            for (int i = 0; i < 40; i++)
-            {
-                snake.Move();
-                Thread.Sleep(300);
-            }
 
-            Console.ReadKey();
+            //движение и управление змейкой
+            while(true)
+            {
+                //Смотрим нажатия клавиш пользователем
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    //Вызываем метод управления направлением змеи из класса Snake
+                    snake.SnakeControl(key.Key);
+                }
+                //Движение змеи
+                snake.Move();
+                Thread.Sleep(150);
+            }
         }
     }
 }
