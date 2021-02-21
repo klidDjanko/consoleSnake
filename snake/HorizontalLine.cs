@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace snake
 {
-    class HorizontalLine
+    class HorizontalLine : Figure
     {
-        //Создаём лист точек, координат (x,y) с символом sym
-        List<Point> coordinats = new List<Point>();
-
         //Конструктор для создания горизонтальной линии
         public HorizontalLine(int xLeft, int xRight, int y, char symbol)
         {
@@ -20,15 +17,6 @@ namespace snake
                 Point point = new Point(x, y, symbol);
                 //Помещаем в лист точек
                 coordinats.Add(point);
-            }
-        }
-
-        //Метод вывода линии на консоль
-        public void Draw()
-        {
-            foreach(Point point in coordinats)
-            {
-                point.Draw();
             }
         }
     }
