@@ -21,6 +21,39 @@ namespace snake
             symbol = userSym;
         }
 
+        //Конструктор для создания точки из другой точки
+        public Point(Point point)
+        {
+            x = point.x;
+            y = point.y;
+            symbol = point.symbol;
+        }
+
+        //Метод корректировки позиции точки
+        public void Move(ref Point point, Direction direction, int offset)
+        {
+            if(direction == Direction.up)
+            {
+                //уменьшаем координату y
+                point.y = y - offset;
+            }
+            if(direction == Direction.down)
+            {
+                //увеличиваем координату y
+                point.y = y + offset;
+            }
+            if(direction == Direction.left)
+            {
+                //уменьшаем координату x
+                point.x = x - offset;
+            }
+            if (direction == Direction.right)
+            {
+                //увеличиваем координату x
+                point.x= x + offset;
+            }
+        }
+
         //Метод вывода точки-символа на консоль
         public void Draw()
         {
