@@ -18,6 +18,14 @@ namespace snake
             Point p2 = new Point(5,10,'+');
             p2.Draw();
 
+            //Попробуем нарисовать горизонтальную линию
+            HorizontalLine horizontalLine = new HorizontalLine(10, 13, 8, '*');
+            horizontalLine.Draw();
+
+            //Попробуем нарисовать вертикальную линию
+            VerticalLine verticalLine = new VerticalLine(8, 18, 10, '*');
+            verticalLine.Draw();
+
             Console.ReadKey();
         }
     }
