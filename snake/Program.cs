@@ -15,11 +15,11 @@ namespace snake
             Console.SetWindowSize(105, 30);
 
             //Создадим и выведем пару точек
-            Point p1 = new Point(2, 5, '#');
-            p1.Draw();
+            //Point p1 = new Point(2, 5, '#');
+            //p1.Draw();
 
-            Point p2 = new Point(5, 10, '+');
-            p2.Draw();
+            //Point p2 = new Point(5, 10, '+');
+            //p2.Draw();
 
             //Ограждение игрового поля
             HorizontalLine horizontalLine = new HorizontalLine(0, 100, 0, '*');
@@ -41,6 +41,9 @@ namespace snake
             //змея длиной 3, ползёт вправо
             Snake snake = new Snake(tail, 10, Direction.right);
             snake.Draw();
+
+            Food food = new Food(100, 24, 'o');
+            food.MakeFood(ref snake.coordinats);
 
             //движение и управление змейкой
             while (true)
