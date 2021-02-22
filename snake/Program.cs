@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace snake
 {
@@ -13,13 +9,6 @@ namespace snake
         {
             //Установим размер окна консоли
             Console.SetWindowSize(105, 30);
-
-            //Создадим и выведем пару точек
-            //Point p1 = new Point(2, 5, '#');
-            //p1.Draw();
-
-            //Point p2 = new Point(5, 10, '+');
-            //p2.Draw();
 
             //Ограждение игрового поля
             HorizontalLine horizontalLine = new HorizontalLine(0, 100, 0, '*');
@@ -49,7 +38,18 @@ namespace snake
             while (true)
             {
                 //Проверяем не закончилась ли игра если змея столкнулась с самой собой или оградой поля
-                if (snake.Collision()) break;
+                if (snake.Collision())
+                {
+                    break;
+                }
+
+                //Проверяем съела ли змея фрукт, если да генерим новый
+                if (snake.Eat(food))
+                {
+                    food.MakeFood(ref snake.coordinats);
+                    snake.Draw();
+                }
+
                 //Смотрим нажатия клавиш пользователем
                 if (Console.KeyAvailable)
                 {
@@ -59,7 +59,7 @@ namespace snake
                 }
                 //Движение змеи
                 snake.Move();
-                Thread.Sleep(150);
+                Thread.Sleep(300);
             }
         }
     }

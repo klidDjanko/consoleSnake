@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace snake
 {
@@ -63,7 +60,7 @@ namespace snake
             Point head = coordinats.Last();
             for (int i = 0; i < coordinats.Count - 1; i++)
             {
-                //
+                //столкновение головы с телом
                 if (head.x == coordinats[i].x && head.y == coordinats[i].y)
                     isDetect = true;
             }
@@ -72,6 +69,33 @@ namespace snake
             if (head.x == 0 || head.y == 0 || head.x == 100 || head.y == 24) isDetect = true;
 
             return isDetect;
+        }
+
+        //Метод, когда змейка ест
+        public bool Eat(Food food)
+        {
+            bool isGrow = false;
+
+            //координаты головы
+            int xHead = coordinats.Last().x;
+            int yHead = coordinats.Last().y;
+
+            //координаты хвоста
+            int xTail = coordinats.First().x;
+            int yTail = coordinats.First().y;
+
+            //голова нашла еду
+            if(xHead == food.x && yHead == food.y)
+            {
+        
+                    //новое звено в росте змеи
+                    Point growSnake = new Point(food.x, food.y, 'x');
+                    coordinats.Add(growSnake);
+ 
+                isGrow = true;
+            }
+
+            return isGrow;
         }
     }
 }
