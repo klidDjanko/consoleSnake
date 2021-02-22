@@ -11,32 +11,42 @@ namespace snake
     {
         static void Main(string[] args)
         {
+            //Установим размер окна консоли
+            Console.SetWindowSize(105, 30);
 
             //Создадим и выведем пару точек
-            Point p1 = new Point(2,5,'#');
+            Point p1 = new Point(2, 5, '#');
             p1.Draw();
 
-            Point p2 = new Point(5,10,'+');
+            Point p2 = new Point(5, 10, '+');
             p2.Draw();
 
-            //Попробуем нарисовать горизонтальную линию
-            HorizontalLine horizontalLine = new HorizontalLine(10, 13, 8, '*');
+            //Ограждение игрового поля
+            HorizontalLine horizontalLine = new HorizontalLine(0, 100, 0, '*');
             horizontalLine.Draw();
 
-            //Попробуем нарисовать вертикальную линию
-            VerticalLine verticalLine = new VerticalLine(8, 18, 10, '*');
+            HorizontalLine horizontalLine2 = new HorizontalLine(0, 100, 24, '*');
+            horizontalLine2.Draw();
+
+
+            VerticalLine verticalLine = new VerticalLine(0, 24, 0, '*');
             verticalLine.Draw();
 
-            //Попробуем создать змею
+            VerticalLine verticalLine2 = new VerticalLine(0, 24, 100, '*');
+            verticalLine2.Draw();
+
+            //Cоздаём змею
             //точка её хвоста
             Point tail = new Point(2, 2, 'x');
-            //змея длиной 15, ползёт вправо
-            Snake snake = new Snake(tail, 15, Direction.right);
+            //змея длиной 3, ползёт вправо
+            Snake snake = new Snake(tail, 10, Direction.right);
             snake.Draw();
 
             //движение и управление змейкой
-            while(true)
+            while (true)
             {
+                //Проверяем не закончилась ли игра если змея столкнулась с самой собой или оградой поля
+                if (snake.Collision()) break;
                 //Смотрим нажатия клавиш пользователем
                 if (Console.KeyAvailable)
                 {

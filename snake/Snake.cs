@@ -53,5 +53,25 @@ namespace snake
             if (key == ConsoleKey.LeftArrow) direction = Direction.left;
             if (key == ConsoleKey.RightArrow) direction = Direction.right;
         }
+
+        //Метод для определения столкновения
+        public bool Collision()
+        {
+            bool isDetect = false;
+            //проверим не столкнулась ли голова с телом
+            //значит, что в листе есть две одинаковых точки
+            Point head = coordinats.Last();
+            for (int i = 0; i < coordinats.Count - 1; i++)
+            {
+                //
+                if (head.x == coordinats[i].x && head.y == coordinats[i].y)
+                    isDetect = true;
+            }
+
+            //проверим не столкнулась ли змея с ограждением игрового поля
+            if (head.x == 0 || head.y == 0 || head.x == 100 || head.y == 24) isDetect = true;
+
+            return isDetect;
+        }
     }
 }
